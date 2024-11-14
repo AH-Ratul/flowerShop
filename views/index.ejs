@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || "Flora" %></title>
+    <link rel="stylesheet" href="/style/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+        </div>
+        <div class="nav-con">
+            <ul class="nav-ul">
+                <li><a class="nav-a" href="/">Home</a></li>
+                <li><a class="nav-a fc" href="">Flower Collection</a></li>
+                <li><a class="nav-a" href="#">Contact</a></li>
+                <li><a class="nav-a" href="">About Us</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-btn">
+            <a href="/users/login"><button class="primary_btn">Login</button></a>
+            <a href="/users/signup"><button class="primary_btn">Sign Up</button></a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="title">
+            <h1>Let flowers make your life beautiful</h1>
+            <p class="primary_font">Welcome to Flora, where fresh blooms meet artful design. Discover stunning
+                arrangements and personalized bouquets for every occasion.</p>
+            <button class="primary_btn">Shop Now</button>
+        </div>
+
+        <img src="/img/pngwing10.png" alt="img">
+    </header>
+
+    <main>
+        <section class="Featured">
+            <div class="TC">
+                <div class="T-container">
+                    <h3 class="F-title">Our Featured Flowers</h3>
+                    <p class="primary_font">It is a long established fact that a reader will be
+                        distracted by the readable
+                        content of a page when
+                        looking at its layout.</p>
+                </div>
+            </div>
+
+            <div class="Flower_container">
+                <div>
+                    <div class="flr one"></div>
+                    <p class="fp">Pink Flower Tree</p>
+                </div>
+                <div>
+                    <div class="flr two"></div>
+                    <p class="fp">Pink Flower Tree</p>
+                </div>
+                <div>
+                    <div class="flr three"></div>
+                    <p class="fp">Pink Flower Tree</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="support">
+            <div class="s-support">
+                <div>
+                    <img src="/img/Group 57.png" alt="img">
+                    <p>Same Day Delivery. Click & Collect.</p>
+                </div>
+                <div>
+                    <img src="/img/Group 58.png" alt="img">
+                    <p>Fresh Flowers. Local Growers.</p>
+                </div>
+                <div>
+                    <img src="/img/Group 59.png" alt="img">
+                    <p>24/7 Free Support.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sale">
+            <div class="sale-title">
+                <h3 class="F-title">Hot Deal! Sale Up To 25% <span style="color:#E55473 ;">Off</span></h3>
+                <p class="primary_font">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                <a href=""><button class="primary_btn">Sign Up</button></a>
+            </div>
+            <div>
+                <img src="/img/pngwing 8.png" alt="img">
+            </div>
+        </section>
+
+        <section class="Instagram">
+            <div class="TC">
+                <div class="T-container">
+
+                    <h3 class="F-title">Instagram</h3>
+                    <p class="primary_font">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                </div>
+            </div>
+
+            <div class="insta-flower">
+                <img src="/img/Flower 01.png" alt="img">
+                <img src="/img/Rectangle 4.png" alt="img">
+                <img src="/img/Rectangle 4.png" alt="img">
+                <img src="/img/Rectangle 4.png" alt="img">
+            </div>
+        </section>
+
+        <section class="support">
+
+            <div class="BG">
+                <h3 class="F-title">Get The Latest Deals</h3>
+                <p class="primary_font">$30 coupon for first shopping</p>
+
+                <div>
+                    <input id="subscribe" type="email" placeholder="Enter your email here ">
+
+                    <button class="primary_btn">Subscribe</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="TC">
+            <div class="T-container">
+                <h3 class="F-title"><span style="color: #E55473;">Flower<span\><span style="color: white;">Shop</span>
+                </h3>
+                <p style="color: white;">It is a long established fact that a reader will be distracted by the
+                    readable content of a page when looking at its layout.</p>
+                <p id="copy"><small>
+                        &copy; <%= new Date().getFullYear() %>, FlowerShop.com. All rights reserved.
+                    </small></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
