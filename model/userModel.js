@@ -6,6 +6,11 @@ export const getUserByEmail = (email, callback) => {
   db.query("SELECT * FROM users WHERE email=?", [email], callback);
 };
 
+// ger user by ID
+export const getUserById = (userId, callback) => {
+  db.query("SELECT * FROM users WHERE userId=?", [userId], callback);
+};
+
 // create a new user
 export const createUser = async (user, callback) => {
   try {
