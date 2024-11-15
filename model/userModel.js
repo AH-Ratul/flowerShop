@@ -1,12 +1,18 @@
 import { db } from "../server.js";
 import bcrypt from "bcrypt";
 
+// get user by Email
+export const getUserByEmail = (email, callback) => {
+  db.query("SELECT * FROM users WHERE email=?", [email], callback);
+};
+
+// create a new user
 export const createUser = async (user, callback) => {
   try {
     const { name, email, phone, date_Of_Birth, password } = user;
 
     // hash the password
-    const salt = await bcrypt.genSalt(10);
+    const salt = await bcrypt.genSalt(12);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // insert new user
