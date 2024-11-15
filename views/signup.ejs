@@ -1,52 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="/style/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,600;1,600&display=swap"
-        rel="stylesheet">
-</head>
-
-<body>
-    <nav>
-        <a href="/">
-            <div class="logo">
-            </div>
-        </a>
-        <div class="nav-con">
-            <ul class="nav-ul">
-                <li><a class="nav-a" href="/">Home</a></li>
-                <li><a class="nav-a fc" href="/flowers">Flower Collection</a></li>
-                <li><a class="nav-a" href="#">Contact</a></li>
-                <li><a class="nav-a" href="/aboutUs">About Us</a></li>
-            </ul>
-        </div>
-
-        <div class="nav-btn">
-            <a href="/users/login"><button class="primary_btn">Login</button></a>
-            <a href="/users/signup"><button class="primary_btn">Sign Up</button></a>
-        </div>
-    </nav>
+<%- include("Shared/header") %>
 
     <main>
         <div class="body">
-
             <div class="container">
                 <div class="user-details">
-
                     <div class="signup">
                         <h2 style="text-align: center; font-size: 30px;"><span style="color: #707070;">Sign</span>
                             <span style="color: #E55473;">UP</span>
                         </h2>
                     </div>
 
-                    <form action="/api/v1/users/signup" method="POST">
+                    <form action="/users/signup" method="POST">
                         <label class="signup-label" for="Name">Name</label>
                         <div class="input-box">
                             <input class="user-input" type="text" name="name" id="Name" placeholder="Enter your name" required>
@@ -84,14 +48,10 @@
                         <div class="btn-signup">
                             <input class="submit" type="submit" value="Sign Up">
                         </div>
-
                     </form>
-
                 </div>
             </div>
-
         </div>
-
     </main>
 
     <footer>
@@ -101,7 +61,6 @@
                 <h3 class="F-title"><span style="color: #E55473;">Flower<span\><span style="color: white;">Shop</span>
                 </h3>
 
-
                 <p style="color: white;">It is a long established fact that a reader will be distracted by the
                     readable content of a page when looking at its layout.</p>
                 <p id="copy"><small>
@@ -110,7 +69,5 @@
             </div>
         </div>
     </footer>
-
 </body>
-
 </html>
