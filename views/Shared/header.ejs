@@ -20,7 +20,7 @@
       <div class="nav-con">
         <ul class="nav-ul">
           <li><a class="nav-a" href="/">Home</a></li>
-          <li><a class="nav-a fc" href="">Flower Collection</a></li>
+          <li><a class="nav-a fc" href="/app/flowers">Flower Collection</a></li>
           <li><a class="nav-a" href="#">Contact</a></li>
           <li><a class="nav-a" href="">About Us</a></li>
         </ul>
@@ -28,13 +28,13 @@
 
       <% if(typeof user !== "undefined" && user) { %>
       <p><%= user.name %></p>
-      <form action="/users/logout" method="POST">
-        <button type="submit" class="logout-btn">Logout</button>
+      <form action="/app/logout" method="POST">
+        <button type="submit" class="primary_btn">Logout</button>
       </form>
       <% } else { %>
       <div class="nav-btn">
-        <a href="/users/login"><button class="primary_btn">Login</button></a>
-        <a href="/users/signup"><button class="primary_btn">Sign Up</button></a>
+        <a href="/app/login"><button class="primary_btn">Login</button></a>
+        <a href="/app/signup"><button class="primary_btn">Signup</button></a>
       </div>
       <% }%>
     </nav>
