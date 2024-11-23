@@ -18,7 +18,6 @@ const createSendToken = (user, statusCode, message, res) => {
     sameSite: "none",
   };
 
-  console.log("tkn", token);
   res.cookie("token", token, cookieOptions);
 
   user.password = undefined;
@@ -35,7 +34,7 @@ export const signup = (req, res) => {
 
   createUser({ ...userData, password }, (err) => {
     if (err) return res.status(500).json({ error: "Error register user" });
-    res.redirect("/users/login");
+    res.redirect("/app/login");
   });
 };
 
@@ -115,7 +114,7 @@ export const globalUser = (req, res, next) => {
 //---------------------- Authenticate -----------------------
 export const authenticate = (req, res, next) => {
   if (!req.user) {
-    return res.redirect("/users/login");
+    return res.redirect("/app/login");
   }
   next();
 };
