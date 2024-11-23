@@ -86,14 +86,15 @@ h1 {
 
 .primary_btn {
     background-color: #E55473;
-    padding: 20px 43px;
+    cursor: pointer;
+    padding: 15px 40px;
+    width: fit-content;
     border-radius: 8px;
     font-weight: 700;
     font-size: 20px;
     color: white;
     border: none;
     height: 64px;
-
 }
 
 /*Main*/
