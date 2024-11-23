@@ -15,18 +15,13 @@ const createSendToken = (user, statusCode, message, res) => {
     expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
     httpOnly: true,
     secure: true,
+    sameSite: "none",
   };
 
+  console.log("tkn", token);
   res.cookie("token", token, cookieOptions);
 
   user.password = undefined;
-
-  return res.status(statusCode).json({
-    status: "success",
-    message,
-    token,
-    data: { user },
-  });
 };
 
 //------------------------- USER SIGNUP ---------------------------
@@ -50,8 +45,6 @@ export const login = (req, res) => {
     const { email, password } = req.body;
     //
     getUserByEmail(email, (err, results) => {
-      console.log(results[0]);
-
       if (err || results.length === 0)
         return res.status(401).json({ error: "Invalid email or password" });
 
@@ -68,7 +61,6 @@ export const login = (req, res) => {
           return res.status(401).json({ error: "Invalid email or password.." });
 
         createSendToken(user, 200, "Login Successfull", res);
-
         return res.redirect("/");
       });
     });
@@ -77,25 +69,53 @@ export const login = (req, res) => {
   }
 };
 
-//------------------ Authenticate -------------------
-export const authenticate = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.redirect("/users/login");
-  }
+//------------------ LOG OUT -----------------------
+export const logout = (req, res, next) => {
+  res.clearCookie("token");
+  res.redirect("/");
+};
 
-  jwt.verify(token, process.env.JWT_KEY, (err, decoded) => {
-    if (err) {
-      return res.redirect("/users/login");
+//------------------ GLOBAL USER -------------------
+export const globalUser = (req, res, next) => {
+  try {
+    let token;
+
+    if (req.headers.cookie && req.headers.cookie.startsWith("token=")) {
+      token = req.headers.cookie.split("=")[1];
+    } else if (req.cookies.token) {
+      token = req.cookies.token;
     }
+
+    if (!token) {
+      req.user = null;
+      return next();
+    }
+
+    // verify the jwt token
+    const decoded = jwt.verify(token, process.env.JWT_KEY);
 
     getUserById(decoded.userId, (err, results) => {
       if (err || results.length === 0) {
-        return res.redirect("/users/login");
+        req.user = null;
+        return next();
       }
+
+      results[0].password = undefined;
 
       req.user = results[0];
       next();
     });
-  });
+  } catch (error) {
+    console.log("error in global user ->", error);
+    req.user = null;
+    next();
+  }
+};
+
+//---------------------- Authenticate -----------------------
+export const authenticate = (req, res, next) => {
+  if (!req.user) {
+    return res.redirect("/users/login");
+  }
+  next();
 };
