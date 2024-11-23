@@ -27,7 +27,7 @@
       </div>
 
       <% if(typeof user !== "undefined" && user) { %>
-      <p><%= user.name %></p>
+      <p class="u_info"><%= user.name %></p>
       <form action="/app/logout" method="POST">
         <button type="submit" class="primary_btn">Logout</button>
       </form>
