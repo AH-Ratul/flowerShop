@@ -14,3 +14,7 @@ userRouter.get("/login", (req, res) => {
 userRouter.post("/signup", signup);
 userRouter.post("/login", login);
 userRouter.post("/logout", logout);
+
+userRouter.get("/flowers", (req, res) => {
+  res.render("flowers", { title: "Flowers", user: req.user });
+});
