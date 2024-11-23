@@ -1,7 +1,9 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
+import cookieParser from "cookie-parser";
 import { appRouter } from "./routes/route.js";
+import { globalUser } from "./controller/authController.js";
 
 export const app = express();
 
@@ -10,14 +12,24 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // MIDDLEWARES
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(globalUser);
 
 // handle MIME type explicity (rare case)
 app.use((req, res, next) => {
   if (req.path.endsWith(".css")) {
     res.setHeader("Content-Type", "text/css");
   }
+  next();
+});
+
+// TEST MIDDLEWARE
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  //console.log('Test -> ',req.headers.cookie);
+
   next();
 });
 
@@ -33,4 +45,12 @@ app.get("/", (req, res) => {
 });
 
 // app route
+
 app.use("/", appRouter);
+
+app.all("*", (req, res, next) => {
+  res.status(404).json({
+    status: "fail",
+    message: `Can't find ${req.originalUrl} on this server.`,
+  });
+});
