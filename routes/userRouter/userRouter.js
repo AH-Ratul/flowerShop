@@ -18,3 +18,7 @@ userRouter.post("/logout", logout);
 userRouter.get("/flowers", (req, res) => {
   res.render("flowers", { title: "Flowers", user: req.user });
 });
+
+userRouter.get("/checkout", (req, res) => {
+  res.render("checkout", { title: "Check Out", user: req.user });
+});
