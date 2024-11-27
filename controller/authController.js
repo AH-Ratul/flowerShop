@@ -7,12 +7,12 @@ const createSendToken = (user, statusCode, message, res) => {
     { userId: user.userId, email: user.email },
     process.env.JWT_KEY,
     {
-      expiresIn: "1h",
+      expiresIn: "7d",
     }
   );
 
   const cookieOptions = {
-    expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     httpOnly: true,
     secure: true,
     sameSite: "none",
