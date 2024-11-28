@@ -115,17 +115,17 @@ h1 {
 }
 
 .one {
-    background-image: url(Flower/pngwing\ 6.png);
+    background-image: url("../img/pngwing 6.png");
     background-color: #f793c37e;
 }
 
 .two {
-    background-image: url(Flower/pngwing\ 5.png);
+    background-image: url("../img/pngwing 5.png");
     background-color: #a0f0f4dc;
 }
 
 .three {
-    background-image: url(Flower/pngwing\ 7.png);
+    background-image: url("../img/pngwing 7.png");
     background-color: #bcf97fd5;
 }
 
@@ -212,7 +212,7 @@ h1 {
 /*search*/
 
 .BG {
-    background-image: url(Flower/Rectangle\ 9.png);
+    background-image: url("../img/Rectangle 9.png");
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
@@ -372,7 +372,7 @@ footer {
 }
 
 .four {
-    background-image: url("./Flower/pngwing\ 10.png");
+    background-image: url("../img/pngwing10.png");
     background-color: #fd9eb3;
 }
 
