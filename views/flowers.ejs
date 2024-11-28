@@ -7,79 +7,18 @@
         <section>
             <div class="flower-collection-container">
                 <div class="flower-collection">
+                    <% flowers.forEach(flower => {%>
                     <div class="f-pic-con">
-                        <div class="f-pic one">
-                            
+                        <div class="f-pic">
+                            <img src="<%= flower.image %>" alt="img" style="width: 250px;">
                         </div>
-                        <a href="/app/checkout" class="buy">Buy Now</a>
+                        <p><%= flower.name %></p>
+                        <p>Price: <%= flower.price %></p>
+                        <form action="/app/checkout/<%= flower.id %>" method="GET">
+                            <button type="submit" class="buy">Buy Now</button>
+                        </form>
                     </div>
-
-                    <div class="f-pic-con">
-                        <div class="f-pic two">
-
-                        </div>
-                        <button class="buy">Buy Now</button>
-                    </div>
-
-                    <div class="f-pic-con">
-                        <div class="f-pic three">
-
-                        </div>
-                        <button class="buy">Buy Now</button>
-                    </div>
-
-                    <div class="f-pic-con">
-                        <div class="f-pic four">
-
-                        </div>
-                        <button class="buy">Buy Now</button>
-                    </div>
-
-                    <div class="f-pic-con">
-                        <div class="f-pic five">
-
-                        </div>
-                        <button class="buy">Buy Now</button>
-                    </div>
-
-                </div>
-
-                <div class="flower-collection">
-
-                    <div class="f-pic-con">
-                        <div class="f-pic six">
-
-                        </div>
-                        <button class="buy">Buy Now</button>
-                    </div>
-
-                    <div class="f-pic-con">
-                        <div class="f-pic seven">
-
-                        </div>
-                        <button class="buy">Buy Now</button>
-                    </div>
-
-                    <div class="f-pic-con">
-                        <div class="f-pic eight">
-
-                        </div>
-                        <button class="buy">Buy Now</button>
-                    </div>
-
-                    <div class="f-pic-con">
-                        <div class="f-pic nine">
-
-                        </div>
-                        <button class="buy">Buy Now</button>
-                    </div>
-
-                    <div class="f-pic-con">
-                        <div class="f-pic ten">
-
-                        </div>
-                        <button class="buy">Buy Now</button>
-                    </div>
+                    <% })%>
                 </div>
             </div>
         </section>
