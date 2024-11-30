@@ -1,0 +1,50 @@
+/*Invoice*/
+.invoice_body {
+    border: 2px solid;
+    border-style: outset;
+    margin: 4rem 10%;
+    padding: 0px 20px;
+    font-family: "Lato", sans-serif;
+}
+
+.invoice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invoice_logo {
+    width: 150px;
+    height: 75px;
+    background-image: url("/img/flora.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.company_details {
+    text-align: end;
+}
+
+.memo_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.memo {
+    display: flex;
+    gap: 50px;
+}
+
+@media print {
+    button {
+        display: none;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    a {
+        display: none;
+    }
+}
