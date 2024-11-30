@@ -1,4 +1,5 @@
 import { db } from "../server.js";
+import FlowerNotifier from "../observer/FlowerNotifier.js";
 
 //------------------- FLOWERS DETAILS ---------------------
 export const flowers = [
@@ -31,6 +32,21 @@ export const flowers = [
     image: "/img/pngwing 6.png",
   },
 ];
+
+export const addFlower = async (flower) => {
+  // Generate a new ID for the flower
+  flower.id = flowers.length + 1;
+
+  // Add the flower to the array
+  flowers.push(flower);
+
+  // Notify subscribers
+  await FlowerNotifier.notifySubscribers(flower);
+
+  console.log("New flower added:", flower);
+};
+
+
 
 //--------------------------- GET SELECTED FLOWER --------------------
 export const getFlowerById = (req, res) => {
