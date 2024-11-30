@@ -3,6 +3,7 @@ import { login, logout, signup } from "../../controller/authController.js";
 import {
   flowers,
   getFlowerById,
+  processCheckout,
 } from "../../controller/flowerController.js";
 
 export const userRouter = express.Router();
@@ -23,3 +24,4 @@ userRouter.get("/flowers", (req, res) => {
   res.render("flowers", { flowers, title: "Flowers", user: req.user });
 });
 userRouter.get("/checkout/:id", getFlowerById);
+userRouter.post("/checkout", processCheckout);
