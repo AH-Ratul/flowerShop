@@ -84,20 +84,29 @@
             </div>
         </section>
 
+        <% if (!user) { %>
         <section class="support">
-
             <div class="BG">
                 <h3 class="F-title">Get The Latest Deals</h3>
                 <p class="primary_font">$30 coupon for first shopping</p>
-
-                <div>
-                    <input id="subscribe" type="email" placeholder="Enter your email here ">
-
-                    <button class="primary_btn">Subscribe</button>
-                </div>
-
+                <form action="/app/subscribe" method="POST">
+                    <div>
+                        <div>
+                            <input 
+                                id="subscribe" 
+                                type="email" 
+                                name="email" 
+                                placeholder="Enter your email here" 
+                                required
+                                aria-label="Enter your email to subscribe"
+                            />
+                            <button class="primary_btn" type="submit">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </section>
+        <% } %>
     </main>
 
     <footer>
