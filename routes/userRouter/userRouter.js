@@ -1,6 +1,9 @@
 import express from "express";
 import { login, logout, signup } from "../../controller/authController.js";
-import { flowerCollection, getFlowerById } from "../../controller/flowerController.js";
+import {
+  flowers,
+  getFlowerById,
+} from "../../controller/flowerController.js";
 
 export const userRouter = express.Router();
 
@@ -16,5 +19,7 @@ userRouter.post("/signup", signup);
 userRouter.post("/login", login);
 userRouter.post("/logout", logout);
 
-userRouter.get("/flowers", flowerCollection);
+userRouter.get("/flowers", (req, res) => {
+  res.render("flowers", { flowers, title: "Flowers", user: req.user });
+});
 userRouter.get("/checkout/:id", getFlowerById);
