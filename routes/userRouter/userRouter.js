@@ -4,6 +4,8 @@ import {
   flowers,
   getFlowerById,
   processCheckout,
+  processingOrder,
+  processInvoice,
 } from "../../controller/flowerController.js";
 
 export const userRouter = express.Router();
@@ -25,3 +27,6 @@ userRouter.get("/flowers", (req, res) => {
 });
 userRouter.get("/checkout/:id", getFlowerById);
 userRouter.post("/checkout", processCheckout);
+
+userRouter.get("/processing/:order_id", processingOrder)
+userRouter.get("/invoice/:order_id", processInvoice);
