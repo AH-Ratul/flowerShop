@@ -23,11 +23,12 @@
           <li><a class="nav-a fc" href="/app/flowers">Flower Collection</a></li>
           <li><a class="nav-a" href="#">Contact</a></li>
           <li><a class="nav-a" href="">About Us</a></li>
+          
         </ul>
       </div>
 
       <% if(typeof user !== "undefined" && user) { %>
-      <p class="u_info"><%= user.name %></p>
+        <a href="/app/profile" class="nav-a">Profile</a>
       <form action="/app/logout" method="POST">
         <button type="submit" class="primary_btn">Logout</button>
       </form>
