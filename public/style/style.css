@@ -12,20 +12,19 @@ header {
     margin-bottom: 100px;
 }
 
-
 nav {
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-content: center;
-    padding: 0px 160px;
+    padding: 0px 60px;
 }
 
 .logo {
     width: 150px;
     height: 75px;
-    background-image: url("Flower/flora.png");
+    background-image: url("/img/flora.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -448,4 +447,38 @@ article>h2 {
     background-color: #E55473;
     color: white;
     padding: 100px;
+}
+
+.profile_pic {
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #f5f5f5;
+    border: 3px solid white;
+}
+
+.profile_container {
+    height: 100vh;
+    display: grid;
+    grid-template-areas:
+
+        "profile profile PS PS PS PS PS PS"
+    ;
+}
+
+.profile {
+
+    background-color: #f890a7;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    grid-area: profile;
+    align-items: center;
+}
+
+.profile_status {
+    grid-area: PS;
+    padding-left: 3%;
+    padding-top: 3%;
 }
