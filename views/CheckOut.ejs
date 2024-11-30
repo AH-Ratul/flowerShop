@@ -26,7 +26,7 @@
 
                         <label class="signup-label" for="Number">Number</label>
                         <div class="input-box">
-                            <input class="user-input" type="text" name="number" id="Number" placeholder="Enter your phone number" required value="<%= user ? user.phone : '' %>"
+                            <input class="user-input" type="text" name="phone" id="Phone" placeholder="Enter your phone number" required value="<%= user ? user.phone : '' %>"
                             <%= user ? 'readonly' : '' %>>
                         </div>
 
@@ -83,7 +83,7 @@
                         <div class="input-box order">
                             <h2>TOTAL</h2>
                             <h2 id="total">0</h2>
-                            <input type="hidden" id="total-input" name="total" value="0">
+                            <input type="hidden" id="total-input" name="totalPrice" value="0">
                         </div>
 
                         <div class="btn-signup">
