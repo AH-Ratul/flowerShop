@@ -7,6 +7,7 @@ import {
   processingOrder,
   processInvoice,
 } from "../../controller/flowerController.js";
+import { subscribeUser } from "../../controller/subscribeController.js";
 
 export const userRouter = express.Router();
 
@@ -34,3 +35,5 @@ userRouter.post("/checkout", processCheckout);
 
 userRouter.get("/processing/:order_id", processingOrder);
 userRouter.get("/invoice/:order_id", processInvoice);
+
+userRouter.post("/subscribe", subscribeUser);
