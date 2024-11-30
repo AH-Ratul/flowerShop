@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flora Invoice</title>
+    <link rel="stylesheet" href="/style/invoice.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,600;1,600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body >
+    <div class="invoice_body">
+        <header class="invoice">
+            <div>
+                <div class="invoice_logo"></div>
+                <h1 style="text-align: center;">Invoice</h1>
+            </div>
+            <div class="company_details">
+                <h3>Flora Flower Shop</h3>
+                <p>345 North Pirerbag</p>
+                <p>Dhaka 1216, Banngladesh</p>
+                
+                
+            </div>
+        </header>
+    
+        <hr>
+    
+        <header class="invoice">
+            <div>
+                <p>Bill To:</p>
+                <h4 style="text-align: center;">Customer Name: <%= order.name %></h3>
+                <p>Email:  <%= order.email %></p>
+                <p>Phone: <%= order.phone %></p>
+                <p>Address: <%= order.address %></p>
+            </div>
+            <div class="company_details">
+                <p><b>INVOICE</b></p>
+                <p>000001</p>
+                <p><b>Proudct Issue Date</b></p>
+                <p><%= new Date().toISOString().split("T")[0] %></p>
+                <p><b>Delivery Date</b></p>
+                <p><%= order.delivery %></p>
+            </div>
+        </header>
+        <hr>
+    
+        <main>
+            <div class="memo_container">
+                <div  style="display: flex; flex-direction: column; align-items: start;">
+                    <p><b>ITEM</b></p>
+                    <p><%= order.product %></p>
+                </div>
+    
+                <div class="memo">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <p><b>Quantity</b></p>
+                    <p><%= order.quantity %></p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <p><b>Price</b></p>
+                        <p><%= order.price %></p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <p><b>Shipping</b></p>
+                        <p>15</p>
+                    </div>
+                </div>
+            </div>
+            <hr >
+    
+            <div class="memo_container">
+                <div>
+                    <p><b>NOTES</b></p>
+                    <p>Thanks For Having Flowers From Us</p>
+    
+                </div>
+    
+                <div class="company_details">
+                    <p><b>TOTAL</b></p>
+                    <h3>TK <%= order.totalPrice %></h3>
+                </div>
+            </div>
+    
+        </main>
+    </div>
+
+    
+    <div style="display: flex; gap: 30px; justify-content: center; align-items: center;">
+        <button onclick="window.print()" style="margin-top: 20px; margin-bottom: 20px; padding: 15px; text-align: center; font-size: 20px; color: #E55473;">Print Invoice</button>
+        <a href="/" style="font-size: 20px;">Go to home</a>
+    </div>
+</body>
+
+</html>
