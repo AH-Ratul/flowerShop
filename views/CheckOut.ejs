@@ -1,103 +1,100 @@
 <%- include("Shared/header") %>
-    <main>
-        <div class="body">
-
+<main>
+    <div class="body">
+        <form action="/app/checkout" method="POST" class="checkout-form">
+            <!-- User Details Section -->
             <div class="container">
                 <div class="user-details">
-
                     <div class="signup">
-                        <h2 style="text-align: center; font-size: 30px;"><span
-                                style="color: #707070;">Billing</span><span style="color: #E55473;">Details</span>
+                        <h2 style="text-align: center; font-size: 30px;">
+                            <span style="color: #707070;">Billing</span>
+                            <span style="color: #E55473;">Details</span>
                         </h2>
                     </div>
-
-                    <form action="">
+                    <div>
                         <label class="signup-label" for="Name">Full Name</label>
                         <div class="input-box">
-                            <input class="user-input" type="text" name="name" id="Name" placeholder="Enter your name"
-                                required>
+                            <input class="user-input" type="text" name="name" id="Name" placeholder="Enter your name" required value="<%= user ? user.name : '' %>"
+                            <%= user ? 'readonly' : '' %>>
                         </div>
 
                         <label class="signup-label" for="Email">Email</label>
                         <div class="input-box">
-                            <input class="user-input" type="email" name="email" id="Email"
-                                placeholder="Enter your email" required>
+                            <input class="user-input" type="email" name="email" id="Email" placeholder="Enter your email" required value="<%= user ? user.email : '' %>"
+                            <%= user ? 'readonly' : '' %>>
                         </div>
 
                         <label class="signup-label" for="Number">Number</label>
                         <div class="input-box">
-                            <input class="user-input" type="text" name="number" id="Number"
-                                placeholder="Enter your phone number" required>
+                            <input class="user-input" type="text" name="number" id="Number" placeholder="Enter your phone number" required value="<%= user ? user.phone : '' %>"
+                            <%= user ? 'readonly' : '' %>>
                         </div>
 
                         <label class="signup-label" for="Address">Address</label>
                         <div class="input-box">
-                            <input class="user-input" type="text" name="address" id="Address"
-                                placeholder="Enter your address" required>
+                            <input class="user-input" type="text" name="address" id="Address" placeholder="Enter your address" required value="">
                         </div>
 
-                        <label class="signup-label" for="delivery">Delivary Date</label>
-                        <div class="input-box">
-                            <input class="user-input" type="date" name="delivery" id="delivery" required>
-                        </div>
-                    </form>
+            
+                    </div>
                 </div>
             </div>
 
-
-            <!--Cash memo-->
-
+            <!-- Order Details Section -->
             <div class="container">
                 <div class="user-details">
-
                     <div class="signup">
-                        <h2 style="text-align: center; font-size: 30px;"><span style="color: #707070;">Your</span><span
-                                style="color: #E55473;">Order</span>
+                        <h2 style="text-align: center; font-size: 30px;">
+                            <span style="color: #707070;">Your</span>
+                            <span style="color: #E55473;">Order</span>
                         </h2>
                     </div>
-
-                    <form action="">
-                        <div class="input-box order">
-                            <h3>PRODUCT</h3>
-                            <h3>SUBTOTAL</h3>
-                        </div>
-                        <div class="input-box order">
-                            <p><%= flower.name %></p>
-                            <input class="order-input" type="email" name="email" id="Email"
-                                placeholder="Enter your email" required>
-                        </div>
-
-                        <div class="input-box order">
-                            <h4 class="total">Subtotal</h4>
-                            <input class="order-input" type="text" name="number" id="Number"
-                                placeholder="Enter your phone number" required>
-                        </div>
-
-
-                        <div class="input-box order">
-                            <h4 class="total">Shipping</h4>
-                            <input class="order-input" type="text" name="address" id="Address"
-                                placeholder="Enter your address" required>
+                    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                        <img src="<%= flower.image %>" alt="img" style="height: 100px;">
+                    </div>
+                    <div>
+                        <div class="order">
+                            <div>
+                                <h3>Product</h3>
+                                <h3 class="order1">Price</h3>
+                            </div>
+                            <div>
+                                <p class="xl"><%= flower.name %></p>
+                                <input class="order-input" type="hidden" name="product" value="<%= flower.name %>">
+                                <p class="order1 xl" id="price"><%= flower.price %></p>
+                                <input class="order-input" type="hidden" id="price-input" name="price" value="<%= flower.price %>">
+                            </div>
                         </div>
 
+                        <div class="order">
+                            <div>
+                                <h3>Quantity</h3>
+                            </div>
+                            <div>
+                                <input type="number" value="1" min="1" oninput="updateTotal()" name="quantity" id="quantity" class="order-input">
+                            </div>
+                        </div>
+
+                        <div class="input-box order">
+                            <h3>Shipping</h3>
+                            <p class="order1 xl" id="shipping">15</p>
+                        </div>
 
                         <div class="input-box order">
                             <h2>TOTAL</h2>
-                            <input class="order-input" type="text" name="delivery" id="delivery" required>
+                            <h2 id="total">0</h2>
+                            <input type="hidden" id="total-input" name="total" value="0">
                         </div>
 
                         <div class="btn-signup">
-                            <input class="submit" type="submit" value="Place Order">
+                            <button class="submit" type="submit">Place Order</button>
                         </div>
-
-                    </form>
-
+                    </div>
                 </div>
             </div>
-
-        </div>
-
-    </main>
+        </form>
+    </div>
+</main>
 
     <footer>
         <div class="TC">
@@ -118,4 +115,24 @@
 
 </body>
 
+<script>
+    function updateTotal() {
+      // Get the price, quantity, and shipping charge
+      const price = parseFloat(document.getElementById("price").innerText);
+      const quantity = parseInt(document.getElementById("quantity").value) || 1; 
+      const shipping = parseFloat(document.getElementById("shipping").innerText);
+  
+      // Calculate the total
+      const total = price * quantity + shipping;
+  
+      // Update the total display
+      document.getElementById("total").innerText = total.toFixed(2);
+      document.getElementById("total-input").value = total.toFixed(2);
+    }
+  
+    // Call updateTotal once on page load to ensure total is correct
+    document.addEventListener("DOMContentLoaded", updateTotal);
+  </script>
+
 </html>
+
