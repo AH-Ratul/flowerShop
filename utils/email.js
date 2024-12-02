@@ -23,7 +23,7 @@ transporter.verify((error, success) => {
 export const sendEmail = async (to, flower) => {
   const mailOptions = {
     from: "flora@email.com",
-    to: to.email,
+    to,
     subject: `New Flower Added: ${flower.name}`,
     text: `A new flower, ${flower.name}, has been added to the store!\n\nDescription: ${flower.description}\nPrice: $${flower.price}`,
   };
