@@ -1,8 +1,7 @@
 import { app } from "./app.js";
 import dotenv from "dotenv";
 import mysql from "mysql";
-import FlowerNotifier from "./observer/FlowerNotifier.js";
-import { addFlower } from "./controller/flowerController.js";
+import { loadSubscribers } from "./controller/subscribeController.js";
 
 dotenv.config();
 
@@ -21,11 +20,10 @@ db.connect((err) => {
     console.log("mysql Err => ", err);
   } else {
     console.log("Database Connected");
-    //FlowerNotifier.loadSubscribers();
   }
 });
 
-
+loadSubscribers();
 
 // Start the Server
 app.listen(PORT, () => {
