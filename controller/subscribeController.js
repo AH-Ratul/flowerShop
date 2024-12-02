@@ -32,7 +32,7 @@ export const subscribeUser = (req, res) => {
       // Add the email to the notifier
       FlowerNotifier.addSubscriber(email);
 
-      //res.redirect("/thank-you");
+      res.send("Thank You");
     });
   });
 };
