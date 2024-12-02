@@ -31,22 +31,16 @@ export const flowers = [
     description: "Elegant and exotic Lilly.",
     image: "/img/pngwing 6.png",
   },
+  {
+    id: 5,
+    name: "Lilly",
+    price: 60,
+    description: "Elegant and exotic Lilly.",
+    image: "/img/pngwing 6.png",
+  },
 ];
 
-export const addFlower = async (flower) => {
-  // Generate a new ID for the flower
-  flower.id = flowers.length + 1;
-
-  // Add the flower to the array
-  flowers.push(flower);
-
-  // Notify subscribers
-  await FlowerNotifier.notifySubscribers(flower);
-
-  console.log("New flower added:", flower);
-};
-
-
+FlowerNotifier.notifySubscribers(flowers);
 
 //--------------------------- GET SELECTED FLOWER --------------------
 export const getFlowerById = (req, res) => {
