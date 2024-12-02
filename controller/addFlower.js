@@ -11,7 +11,7 @@ export const flower = new Proxy(flowers, {
       // Notify subscribers
       FlowerNotifier.notifySubscribers(value);
     }
-
+ 
     // Update the original array
     target[property] = value;
     return true;
