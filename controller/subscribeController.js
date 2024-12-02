@@ -1,5 +1,6 @@
 import FlowerNotifier from "../observer/FlowerNotifier.js";
 import { db } from "../server.js";
+import { flower } from "./addFlower.js";
 
 export const subscribeUser = (req, res) => {
   const { email } = req.body;
@@ -48,6 +49,8 @@ export const getRecipientsFromDB = async () => {
 
       const emails = results.map((row) => row.email);
       resolve(emails);
+
+      //FlowerNotifier.addSubscriber(emails);
     });
   });
 };
@@ -57,6 +60,14 @@ export const loadSubscribers = async () => {
     const emails = await getRecipientsFromDB();
     emails.forEach((email) => FlowerNotifier.addSubscriber(email));
     console.log("All subscribers loaded from the database.");
+
+    // flower.push({
+    //   id: 5,
+    //   name: "Sunflower Bliss",
+    //   price: 40,
+    //   description: "Bright and cheerful sunflowers.",
+    //   image: "/img/pngwing11.png",
+    // });
   } catch (error) {
     console.error("Error loading subscribers:", error);
   }
