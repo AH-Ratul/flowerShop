@@ -1,5 +1,4 @@
 import { db } from "../server.js";
-import FlowerNotifier from "../observer/FlowerNotifier.js";
 
 //------------------- FLOWERS DETAILS ---------------------
 export const flowers = [
@@ -31,16 +30,8 @@ export const flowers = [
     description: "Elegant and exotic Lilly.",
     image: "/img/pngwing 6.png",
   },
-  {
-    id: 5,
-    name: "Lilly",
-    price: 60,
-    description: "Elegant and exotic Lilly.",
-    image: "/img/pngwing 6.png",
-  },
 ];
 
-FlowerNotifier.notifySubscribers(flowers);
 
 //--------------------------- GET SELECTED FLOWER --------------------
 export const getFlowerById = (req, res) => {
