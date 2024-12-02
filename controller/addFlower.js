@@ -1,8 +1,7 @@
 import FlowerNotifier from "../observer/FlowerNotifier.js";
-import { flowers } from "flowerController.js";
 
 // Wrap the flowers array in a Proxy to intercept operations
-export const flower = new Proxy(flowers, {
+export const flower = new Proxy([], {
   set(target, property, value) {
     // Detect when a new flower is added
     if (!isNaN(property)) {
@@ -18,10 +17,3 @@ export const flower = new Proxy(flowers, {
   },
 });
 
-flower.push({
-  id: 5,
-  name: "Sunflower Bliss",
-  price: 40,
-  description: "Bright and cheerful sunflowers.",
-  image: "/img/pngwing11.png",
-});
