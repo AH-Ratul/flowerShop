@@ -45,15 +45,19 @@ export const getRecipientsFromDB = async () => {
         console.error("Error fetching recipients from DB:", err);
         return reject(err);
       }
-      // Map the results to an array of email addresses
+
       const emails = results.map((row) => row.email);
       resolve(emails);
-      addFlower({
-        name: "Orchid Charm",
-        price: 70,
-        description: "Elegant and exotic orchids.",
-        image: "/img/pngwing 7.png",
-      });
     });
   });
+};
+
+export const loadSubscribers = async () => {
+  try {
+    const emails = await getRecipientsFromDB();
+    emails.forEach((email) => FlowerNotifier.addSubscriber(email));
+    console.log("All subscribers loaded from the database.");
+  } catch (error) {
+    console.error("Error loading subscribers:", error);
+  }
 };
